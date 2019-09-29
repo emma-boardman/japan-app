@@ -1,56 +1,20 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
-import ToDoItem from "./components/ToDoItem";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import todoReducer from "./store/reducers/todos";
+import MainNavigator from "./navigation/MainNavigator";
+
+const rootReducer = combineReducers({
+  todos: todoReducer
+});
+
+const store = createStore(rootReducer);
 
 export default function App() {
-  const [listItems, setListItems] = useState([
-    {
-      key: "1",
-      text: "Buy coffee from a vending machine",
-      completed: true
-    },
-    {
-      key: "2",
-      text: "Watch a sumo practice",
-      completed: false
-    }
-  ]);
-
-  const handleCompletedToggle = (itemKey) => {
-    console.log(itemKey);
-    var newList = [...listItems];
-    var itemIndex = newList.findIndex(x => x.key === itemKey);
-    newList[itemIndex].completed = !newList[itemIndex].completed
-    setListItems(newList)
-  }
-
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={listItems}
-        renderItem={itemData => (
-          <ToDoItem
-            id={itemData.item.key}
-            text={itemData.item.text}
-            completed={itemData.item.completed}
-            onToggle={handleCompletedToggle}
-          />
-        )}
-        style={styles.content}
-      ></FlatList>
-    </View>
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "10%"
-  },
-  content: {
-    flex: 1
-  }
-});
