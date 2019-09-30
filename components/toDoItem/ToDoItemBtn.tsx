@@ -1,12 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 const ToDoItemBtn = props => {
   return (
-    <View>
-      <Text>BUTTON</Text>
+    <View style={styles.btnContainer}>
+      <Text>...</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  btnContainer: {
+    alignSelf: 'center'
+  }
+})
 
 export default ToDoItemBtn;

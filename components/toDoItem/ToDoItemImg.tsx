@@ -1,12 +1,20 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
+
+import Colors from '../../constants/Colors'
 
 const ToDoItemImg = props => {
   return (
-    <View>
+    <View style={styles.imgContainer}>
       <Text>{props.imgURL}</Text>
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  imgContainer: {
+    borderRightColor: Colors.primaryBlack,
+    borderRightWidth: 4
+  }
+})
 export default ToDoItemImg;
