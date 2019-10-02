@@ -10,68 +10,42 @@ import ToDoItemText from "../components/toDoItem/ToDoItemText";
 import Colors from "../constants/Colors";
 
 const ToDoItem = props => {
-  let evenRow =  <View style={styles.container}>
-  <View style={styles.containerRow}>
-    <ToDoItemImg imgURL={props.imgURL} />
-    <View style={styles.contentCol}>
-      <View style={styles.contentLeftCol}>
-        <View style={StyleSheet.contentColRow}>
-          <ToDoItemText title={props.title} />
-        </View>
-        <View style={StyleSheet.contentColRow}>
-          <ToDoItemBtn />
-        </View>
-      </View>
-      {/* <ToDoItemChkBox complete={props.complete} /> */}
-      <View style={styles.contentRightCol}>
-        <View style={StyleSheet.contentColRow}>
-          <CheckBox
-            style={styles.checkBox}
-            value={props.completed}
-            onValueChange={props.onToggle.bind(this, props.id)}
-          />
-        </View>
-        <View style={StyleSheet.contentColRow}>
-         <Text></Text>
-        </View>
-      </View>
-    </View>
-  </View>
-</View> ;
+  let evenRow;
 
-
-  let oddRow =  <View style={styles.container}>
-  <View style={styles.containerRow}>
-    <View style={styles.contentCol}>
-      <View style={styles.contentLeftCol}>
-        <View style={StyleSheet.contentColRow}>
-          <ToDoItemText title={props.title} />
-        </View>
-        <View style={StyleSheet.contentColRow}>
-          <ToDoItemBtn />
-        </View>
-      </View>
-      {/* <ToDoItemChkBox complete={props.complete} /> */}
-      <View style={styles.contentRightCol}>
-        <View style={StyleSheet.contentColRow}>
-          <CheckBox
-            style={styles.checkBox}
-            value={props.completed}
-            onValueChange={props.onToggle.bind(this, props.id)}
-          />
-        </View>
-        <View style={StyleSheet.contentColRow}>
-         <Text></Text>
-        </View>
-      </View>
-    </View>
-    <ToDoItemImg imgURL={props.imgURL} />
-  </View>
-</View>;
+  //   let oddRow =  <View style={styles.container}>
+  //   <View style={styles.containerRow}>
+  //     <View style={styles.contentCol}>
+  //       <View style={styles.contentLeftCol}>
+  //         <View style={StyleSheet.contentColRow}>
+  //           <ToDoItemText title={props.title} />
+  //         </View>
+  //         <View style={StyleSheet.contentColRow}>
+  //           <ToDoItemBtn />
+  //         </View>
+  //       </View>
+  //       {/* <ToDoItemChkBox complete={props.complete} /> */}
+  //       <View style={styles.contentRightCol}>
+  //         <View style={StyleSheet.contentColRow}>
+  //           <CheckBox
+  //             style={styles.checkBox}
+  //             value={props.completed}
+  //             onValueChange={props.onToggle.bind(this, props.id)}
+  //           />
+  //         </View>
+  //         <View style={StyleSheet.contentColRow}>
+  //          <Text></Text>
+  //         </View>
+  //       </View>
+  //     </View>
+  //     <ToDoItemImg imgURL={props.imgURL} />
+  //   </View>
+  // </View>;
 
   return (
     <View style={styles.container}>
-      <View style={styles.containerRow}>
+      <View
+        style={[styles.containerRow, props.isOddRow && styles.containerRowOdd]}
+      >
         <ToDoItemImg imgURL={props.imgURL} />
         <View style={styles.contentCol}>
           <View style={styles.contentLeftCol}>
@@ -92,7 +66,7 @@ const ToDoItem = props => {
               />
             </View>
             <View style={StyleSheet.contentColRow}>
-             <Text></Text>
+              <Text></Text>
             </View>
           </View>
         </View>
@@ -111,6 +85,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryBeige,
     flex: 3,
     flexShrink: 3
+  },
+  containerRowOdd: {
+    flexDirection: "row-reverse"
   },
   contentCol: {
     flexDirection: "row",

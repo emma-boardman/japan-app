@@ -21,29 +21,18 @@ const ToDoOverviewScreen = props => {
     <FlatList
       data={todos}
       keyExtractor={todo => todo.id}
-      renderItem={({ item, index }) =>
-        index % 2 == 0 ?
-          <ToDoItem
-            id={item.id}
-            title={item.title}
-            imgURL={item.imgURL}
-            descriptionWhy={item.descriptionWhy}
-            descriptionWhere={item.descriptionWhere}
-            complete={item.complete}
-            onToggle={handleCompletedToggle}
-          />
-        : 
-          <ToDoItemOdd
-            id={item.id}
-            title={item.title}
-            imgURL={item.imgURL}
-            descriptionWhy={item.descriptionWhy}
-            descriptionWhere={item.descriptionWhere}
-            complete={item.complete}
-            onToggle={handleCompletedToggle}
-          />
-        
-      }
+      renderItem={({ item, index }) => (
+        <ToDoItem
+          id={item.id}
+          title={item.title}
+          imgURL={item.imgURL}
+          descriptionWhy={item.descriptionWhy}
+          descriptionWhere={item.descriptionWhere}
+          complete={item.complete}
+          onToggle={handleCompletedToggle}
+          isOddRow={index % 2 !== 0}
+        />
+      )}
     />
   );
 };
