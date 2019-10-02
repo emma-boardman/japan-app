@@ -12,11 +12,11 @@ import Colors from "../constants/Colors";
 const ToDoItem = props => {
 
   return (
-    <View style={[styles.container, props.complete && props.completeContainer]}>
+    <View style={styles.container}>
       <View
-        style={[styles.containerRow, props.isOddRow && styles.containerRowOdd]}
+        style={[styles.containerRow, props.isOddRow && styles.containerRowOdd, props.complete && styles.containerRowComplete]}
       >
-        <ToDoItemImg imgURL={props.imgURL} />
+        <ToDoItemImg imgURL={props.imgURL} isOddRow={props.isOddRow}/>
         <View style={styles.contentCol}>
           <View style={styles.contentLeftCol}>
             <View style={StyleSheet.contentColRow}>
@@ -29,11 +29,11 @@ const ToDoItem = props => {
           {/* <ToDoItemChkBox complete={props.complete} /> */}
           <View style={styles.contentRightCol}>
             <View style={StyleSheet.contentColRow}>
-              <CheckBox
+              {/* <CheckBox
                 style={styles.checkBox}
                 value={props.complete}
                 onValueChange={props.onToggle.bind(this, props.id)}
-              />
+              /> */}
               <Text>{props.complete.toString()}</Text>
             </View>
             <View style={StyleSheet.contentColRow}>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 3,
     flexShrink: 3
   },
-  completeContainer: {
+  containerRowComplete: {
     backgroundColor: Colors.primaryGold
   },
   containerRowOdd: {

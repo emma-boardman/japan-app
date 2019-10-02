@@ -5,14 +5,16 @@ const TODOS = [
     "t1",
     "Buy coffee from a vending machine",
     "url.png",
+    "narrow",
     "Because",
     "Literally anywhere",
-    false
+    true
   ),
   new ToDoItem(
     "t2",
     "Buy ramen from a ticket machine",
     "url.png",
+    "wide",
     "Because",
     "Literally anywhere",
     false
