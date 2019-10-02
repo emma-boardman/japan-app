@@ -1,21 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, FlatList } from "react-native";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import ToDoItem from "../containers/ToDoItem";
-import ToDoItemOdd from "../containers/ToDoItemOdd";
+import * as todoActions from "../store/actions/todos";
 
 const ToDoOverviewScreen = props => {
-  //   [todos, setToDos] = useState(useSelector(state => state.todos.todos))
   const todos = useSelector(state => state.todos.todos);
-  console.log(todos[0].imgURl);
+  console.log("?", todos);
+
   const handleCompletedToggle = itemId => {
-    console.log(itemId);
-    // var newList = [...todos];
-    // var itemIndex = newList.findIndex(x => x.id === itemId);
-    // newList[itemIndex].complete = !newList[itemIndex].complete;
-    // setToDos(newList);
+    dispatch(todoActions.toggleToDoCompletetion(itemId));
   };
+
+  const dispatch = useDispatch();
 
   return (
     <FlatList

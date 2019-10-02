@@ -7,7 +7,7 @@ const TODOS = [
     "url.png",
     "Because",
     "Literally anywhere",
-    "false"
+    false
   ),
   new ToDoItem(
     "t2",
@@ -15,7 +15,7 @@ const TODOS = [
     "url.png",
     "Because",
     "Literally anywhere",
-    "false"
+    false
   ),
 
 ];
