@@ -5,7 +5,6 @@ const TODOS = [
     "t1",
     "Buy coffee from a vending machine",
     "url.png",
-    "narrow",
     "Because",
     "Literally anywhere",
     true
@@ -14,7 +13,6 @@ const TODOS = [
     "t2",
     "Buy ramen from a ticket machine",
     "url.png",
-    "wide",
     "Because",
     "Literally anywhere",
     false
