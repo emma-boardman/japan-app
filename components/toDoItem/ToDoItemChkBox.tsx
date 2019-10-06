@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const ToDoItemChkBox = props => {
   return (
+    <View style={styles.outerContainer}>
     <TouchableNativeFeedback onPress={props.onValueChange}>
       <View style={styles.container}>
         {props.value &&  <Ionicons name={"md-checkmark"} size={23} color={Colors.primaryBlack} />
@@ -16,6 +17,7 @@ const ToDoItemChkBox = props => {
         }
       </View>
     </TouchableNativeFeedback>
+    </View>
   );
 };
 

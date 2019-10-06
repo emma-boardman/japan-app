@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 
 import ToDoItemImg from "./ToDoItemImg";
@@ -10,6 +10,8 @@ import ToDoItemText from "../components/toDoItem/ToDoItemText";
 import Colors from "../constants/Colors";
 
 const ToDoItem = props => {
+  const [showDescription, setShowDescription] = useState(false);
+
   return (
     <View style={styles.container}>
       <View
@@ -28,27 +30,39 @@ const ToDoItem = props => {
         </View>
         <View style={styles.contentCol}>
           <View style={styles.contentLeftCol}>
-            <View style={StyleSheet.contentColRow}>
+            <View style={styles.contentColRow}>
               <ToDoItemText title={props.title} />
             </View>
-            <View style={StyleSheet.contentColRow}>
-              <ToDoItemBtn />
+            <View style={styles.contentColRow}>
+              <ToDoItemBtn
+                style={styles.contentDescBtn}
+                showDescription={() => {
+                  setShowDescription(!showDescription);
+                }}
+              />
             </View>
           </View>
           <View style={styles.contentRightCol}>
-            <View style={StyleSheet.contentColRow}>
+            <View style={styles.contentColRow}>
               <ToDoItemChkBox
                 style={styles.checkBox}
                 value={props.complete}
                 onValueChange={props.onToggle.bind(this, props.id)}
               />
             </View>
-            <View style={StyleSheet.contentColRow}>
+            <View style={styles.contentColRow}>
               <Text></Text>
             </View>
           </View>
         </View>
       </View>
+
+      {showDescription && (
+        <ToDoItemDescription
+          why={props.descriptionWhy}
+          where={props.descriptionWhere}
+        />
+      )}
     </View>
   );
 };
@@ -78,20 +92,15 @@ const styles = StyleSheet.create({
     width: (Dimensions.get("window").width / 4) * 3
   },
   contentLeftCol: {
-    alignItems: "flex-end",
-    justifyContent: "center"
+    alignItems: "center",
+    justifyContent: "center",
+    width: "85%",
+    padding: 10
   },
   contentRightCol: {
+    alignItems: "center",
     justifyContent: "center",
-    flex: 1
-  },
-  contentColRow: {
-    flex: 1,
-    flexShrink: 1
-  },
-  checkBox: {
-    // width: 15,
-    // height: 15
+    width: "15%"
   }
 });
 export default ToDoItem;

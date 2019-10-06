@@ -41,7 +41,7 @@ const ToDoOverviewScreen = props => {
 
 ToDoOverviewScreen.navigationOptions = navData => {
   return {
-    headerTitle: "Japan App"
+    headerTitle: "Japan App",
   };
 };
 
