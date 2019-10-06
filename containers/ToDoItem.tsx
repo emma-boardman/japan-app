@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 
-import ToDoItemImg from "../components/toDoItem/ToDoItemImg";
+import ToDoItemImg from "./ToDoItemImg";
 import ToDoItemBtn from "../components/toDoItem/ToDoItemBtn";
 import ToDoItemChkBox from "../components/toDoItem/ToDoItemChkBox";
 import ToDoItemDescription from "../components/toDoItem/ToDoItemDescription";
@@ -20,7 +20,11 @@ const ToDoItem = props => {
         ]}
       >
         <View style={styles.imgCol}>
-         <ToDoItemImg style={styles.img} imgURL={props.imgURL} isOddRow={props.isOddRow} />
+          <ToDoItemImg
+            imgURL={props.imgURL}
+            isOddRow={props.isOddRow}
+            complete={props.complete}
+          />
         </View>
         <View style={styles.contentCol}>
           <View style={styles.contentLeftCol}>
@@ -53,7 +57,7 @@ const styles = StyleSheet.create({
   containerRow: {
     flexDirection: "row",
     width: "100%",
-    height: Dimensions.get('window').height / 5.5,
+    height: Dimensions.get("window").height / 5.5,
     borderBottomColor: Colors.primaryBlack,
     borderBottomWidth: 8,
     backgroundColor: Colors.primaryBeige,
@@ -66,17 +70,16 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse"
   },
   imgCol: {
-    width: Dimensions.get('window').width / 4,
+    width: Dimensions.get("window").width / 4
   },
   contentCol: {
     flexDirection: "row",
     paddingHorizontal: 10,
-    width: Dimensions.get('window').width / 4 * 3
+    width: (Dimensions.get("window").width / 4) * 3
   },
   contentLeftCol: {
     alignItems: "flex-end",
-    justifyContent: "center",
-   
+    justifyContent: "center"
   },
   contentRightCol: {
     justifyContent: "center",

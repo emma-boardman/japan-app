@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, FlatList } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,8 +9,11 @@ const ToDoOverviewScreen = props => {
   const todos = useSelector(state => state.todos.todos);
   console.log("?", todos);
 
+  const [triggerAnimation, setTriggerAnimation] = useState(false);
+
   const handleCompletedToggle = itemId => {
-    dispatch(todoActions.toggleToDoCompletetion(itemId));
+    dispatch(todoActions.toggleToDoCompletion(itemId)); 
+    setTriggerAnimation(true)
   };
 
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ const ToDoOverviewScreen = props => {
           complete={item.complete}
           onToggle={handleCompletedToggle}
           isOddRow={index % 2 !== 0}
+          triggerAnimation={triggerAnimation}
         />
       )}
     />
